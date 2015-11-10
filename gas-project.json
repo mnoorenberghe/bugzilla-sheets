@@ -1,0 +1,19 @@
+{
+  "src": {
+    "fileId": "1HlJdC_XJHNxzrS91A6WdMBs1qvp9mWw4WE7pJo93SbaEC2F5GAHKZmFT",
+    "files": {
+      "Sheet": {
+        "path": "/Users/matthew/repos/bugzilla_sheets/Sheet.js",
+        "type": "server_js"
+      },
+      "Bug": {
+        "path": "/Users/matthew/repos/bugzilla_sheets/Bug.js",
+        "type": "server_js"
+      },
+      "Integration": {
+        "path": "/Users/matthew/repos/bugzilla_sheets/Integration.js",
+        "type": "server_js"
+      }
+    }
+  }
+}
