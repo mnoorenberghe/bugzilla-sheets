@@ -7,7 +7,9 @@ var SETTINGS = {
   HEADER_ROWS: 1, // Rows to ignore
   BUG_ID_COLUMN: 1, // = A
   BUG_COLUMNS: ["summary", "status", "nickname:assigned_to_detail"],
-  ADDITIONAL_FETCHED_FIELDS: ["assigned_to", "resolution", "whiteboard", "flags", "cf_qa_whiteboard"]
+  ADDITIONAL_FETCHED_FIELDS: ["assigned_to", "resolution", "whiteboard", "flags", "cf_qa_whiteboard"],
+  RECIPIENT_EMAIL: Session.getActiveUser().getEmail(),
+  RECIPIENT_EMAIL_TITLE : "Batch completed"
 };
 
 // TODO: Be careful of performance and quota with update all. Perhaps just a batch instead of all. e.g. with last update column deletion.
@@ -67,6 +69,8 @@ function onOpen() {
               .addItem("Set # of header rows to ignore…", "promptHeaderRows")
               .addItem("Set bugzilla columns…", "promptBugColumns")
               .addItem("Set watch column…", "promptWatchColumn")
+              .addItem("Set reciepient email…", "promptRecipientEmail")
+              .addItem("Set email title…", "promptEmailTitle")
               .addItem("View current settings…", "viewSettings")
              ).addToUi();
 };
@@ -81,7 +85,10 @@ function loadSettings() {
     var value = documentProperties.getProperty(setting);
     Logger.log("value: " + value);
     if (value) {
-      if (setting == "BUG_COLUMNS") {
+        if ( setting == "RECIPIENT_EMAIL" ||setting == "RECIPIENT_EMAIL_TITLE") {
+            SETTINGS[setting] = value;
+        }
+        else if (setting == "BUG_COLUMNS") {
         SETTINGS[setting] = value.trim().split(",");
       } else {
         SETTINGS[setting] = parseInt(value);
@@ -127,6 +134,16 @@ function promptWatchColumn() {
 function promptHeaderRows() {
   return promptSetting("HEADER_ROWS", "Number of header rows to ignore",
                        "Enter the number of header rows at the top of the sheet to ignore:");
+}
+
+function promptRecipientEmail() {
+    return promptSetting("RECIPIENT_EMAIL", "Email address to which the email will be sent",
+        "Enter the email address to which the email will be sent after the batch is complete");
+}
+
+function promptEmailTitle() {
+    return promptSetting("RECIPIENT_EMAIL_TITLE", "Email custom title",
+        "Enter the custom title for the email that will be sent after the batch is complete");
 }
 
 function promptSetting(key, title, description) {

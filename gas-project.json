@@ -13,6 +13,10 @@
       "Integration": {
         "path": "/Users/matthew/repos/bugzilla_sheets/Integration.js",
         "type": "server_js"
+      },
+      "ContinuousBatch": {
+        "path": "/Users/matthew/repos/bugzilla_sheets/ContinuousBatch.js",
+        "type": "server_js"
       }
     }
   }

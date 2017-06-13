@@ -123,14 +123,29 @@ function updateActiveSheet() {
   loadSettings();
   var sheet = SpreadsheetApp.getActiveSheet();
   var lastRow = sheet.getLastRow();
-  for (var y = SETTINGS.HEADER_ROWS + 1; y <= lastRow; y++){
+  var functionName = "updateActiveSheet";
+
+  startOrResumeContinousBatch(functionName);
+
+  if (getBatchKey(functionName) === ""){
+      setBatchKey(functionName, SETTINGS.HEADER_ROWS + 1);
+  }
+
+  var counter = Number(getBatchKey(functionName));
+
+  for (var y = counter; y <= lastRow; y++){
     var range = sheet.getRange(y, SETTINGS.BUG_ID_COLUMN);
     var val = range.getValue();
     if (!isValidBugNumber(val)) {
       continue;
     }
     updateRowWithBug(val, range);
+    setBatchKey(functionName, y);
+    if (isTimeRunningOut(functionName)){
+        return;
+    }
   }
+  endContinuousBatch(functionName, SETTINGS.RECIPIENT_EMAIL, SETTINGS.RECIPIENT_EMAIL_TITLE);
 }
 
 function clearGeneratedFormatting(range) {
