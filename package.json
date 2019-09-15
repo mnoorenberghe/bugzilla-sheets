@@ -1,0 +1,38 @@
+{
+  "name": "bugzilla-sheets",
+  "version": "17.0.0",
+  "description": "Google Apps Script add-on that fetches data from a Bugzilla installation to populate columns.",
+  "main": "Integration.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnoorenberghe/bugzilla-sheets.git"
+  },
+  "keywords": [
+    "bugzilla",
+    "gsuite",
+    "spreadsheet",
+    "bug-tracker",
+    "sheets"
+  ],
+  "author": "MattN",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/mnoorenberghe/bugzilla-sheets/issues"
+  },
+  "homepage": "https://github.com/mnoorenberghe/bugzilla-sheets#readme",
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "6.1.0",
+    "eslint-plugin-fetch-options": "0.0.5",
+    "eslint-plugin-googleappsscript": "^1.0.3",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-mozilla": "^2.1.0",
+    "eslint-plugin-no-unsanitized": "3.0.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "1.17.0"
+  }
+}

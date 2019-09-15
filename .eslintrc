@@ -1,0 +1,12 @@
+{
+"extends": [
+"plugin:mozilla/recommended"
+],
+    "plugins": [
+      "googleappsscript",
+      "mozilla"
+    ],
+    "env": {
+      "googleappsscript/googleappsscript": true
+    }
+}

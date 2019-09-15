@@ -15,9 +15,9 @@ function lookForBugNumberChange(e) {
 
   // TODO: Set a comment on the edited cell to indicate when it was changed.
   //range.setNote('Last modified: ' + new Date());
-  
+
   clearGeneratedFormatting(range);
-  
+
   for (var col = range.getColumn(); col < range.getColumn() + range.getWidth(); col++) {
     if (col != SETTINGS.BUG_ID_COLUMN) {
       continue;
@@ -36,11 +36,11 @@ function updateRowWithBug(id, idRange) {
   if (idRange.getWidth() > 1 || idRange.getHeight() > 1) {
     throw new Error("Invalid range to update bug");
   }
-  
+
   if (idRange.getRow() <= SETTINGS.HEADER_ROWS) {
     return;
   }
-  
+
   var bug = new Bug(id);
   var cleansedColumns = SETTINGS.BUG_COLUMNS.map(function(val) {
     var field = val.trim();
@@ -68,7 +68,7 @@ function updateRowWithBug(id, idRange) {
       flagName = components[1];
       flagProp = components[2];
     }
-    var cell = toUpdate.getCell(1, x + 1)
+    var cell = toUpdate.getCell(1, x + 1);
     if (result) {
       var val = undefined;
       try {

@@ -56,11 +56,18 @@ Bug.prototype = {
     }
     return nickname;
   },
-  
+
   getField: function(fieldName) {
-    return typeof(this.fields[fieldName]) === "undefined" ? "" : this.fields[fieldName];
+    var val = this.fields[fieldName];
+    if (typeof(val) === "undefined") {
+      return "";
+    }
+    if (Array.isArray(val)) {
+      return val.join(", ");
+    }
+    return this.fields[fieldName];
   },
-  
+
   getFlag: function(bugFlagName, prop) {
     if (!prop) {
       prop = "status";

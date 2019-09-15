@@ -156,6 +156,7 @@ function promptSetting(key, title, description) {
 
 
 function _test() {
-  var bug = new Bug(35);
-  bug.fetch(SETTINGS.BUG_COLUMNS.concat(SETTINGS.ADDITIONAL_FETCHED_FIELDS));
+  var bug = new Bug(445639);
+  bug.fetch(SETTINGS.BUG_COLUMNS.concat(SETTINGS.ADDITIONAL_FETCHED_FIELDS).concat(["keywords"]));
+  Logger.log(bug.getField("keywords"));
 }
