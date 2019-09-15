@@ -3,6 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 // Original author: MattN
 
+/* exported SETTINGS, createSpreadsheetEditTrigger, editTrigger, loadSettings */
+/* global Bug, lookForBugNumberChange */
+
 var SETTINGS = {
   HEADER_ROWS: 1, // Rows to ignore
   BUG_ID_COLUMN: 1, // = A
@@ -46,6 +49,7 @@ function editTrigger(e) {
 /**
  * Runs when the add-on is installed.
  */
+/* eslint-disable-next-line no-unused-vars */
 function onInstall() {
   onOpen();
 }
@@ -69,7 +73,7 @@ function onOpen() {
               .addItem("Set watch column…", "promptWatchColumn")
               .addItem("View current settings…", "viewSettings")
              ).addToUi();
-};
+}
 
 function loadSettings() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -91,14 +95,15 @@ function loadSettings() {
 
   var triggers = ScriptApp.getUserTriggers(ss);
   Logger.log(triggers);
-  for (var i = 0; i < triggers.length; i++) {
-    if (triggers[i].getEventType() != ScriptApp.EventType.ON_EDIT) {
+  for (var j = 0; j < triggers.length; j++) {
+    if (triggers[j].getEventType() != ScriptApp.EventType.ON_EDIT) {
       continue;
     }
-    SETTINGS["TRIGGER_ON_EDIT"] = triggers[i].getUniqueId();
+    SETTINGS["TRIGGER_ON_EDIT"] = triggers[j].getUniqueId();
   }
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function viewSettings() {
   loadSettings();
   var settings = Object.keys(SETTINGS);
@@ -110,6 +115,7 @@ function viewSettings() {
   SpreadsheetApp.getUi().alert(output);
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function promptBugColumns() {
   return promptSetting("BUG_COLUMNS", "Bugzilla columns to display",
                        "Enter an ordered, comma-separated list of Bugzilla REST API fields to display.\n" +
@@ -117,6 +123,7 @@ function promptBugColumns() {
                        "Special non-Bugzilla supported values: type, qe-verify (also looks in whiteboards for [qa…]), nickname:assigned_to_detail");
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function promptWatchColumn() {
   return promptSetting("BUG_ID_COLUMN", "Bug ID watch column",
                        "Enter the column number (e.g. 1=A, 2=B, 3=C, etc.) to watch for bug IDs.\n" +
@@ -124,6 +131,7 @@ function promptWatchColumn() {
                        "Note: this applies to the whole document, not just the active sheet");
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function promptHeaderRows() {
   return promptSetting("HEADER_ROWS", "Number of header rows to ignore",
                        "Enter the number of header rows at the top of the sheet to ignore:");
@@ -135,12 +143,11 @@ function promptSetting(key, title, description) {
   var defaultValue = SETTINGS[key];
   loadSettings();
   var currentValue = SETTINGS[key];
-  
+
   var message = description + "\n\n" +
     "Default value: " + defaultValue + "\n" +
     "Current value: " + currentValue + "\n";
 
-  
   var result = ui.prompt(title, message, ui.ButtonSet.OK_CANCEL);
 
   // Process the user's response.
@@ -154,7 +161,7 @@ function promptSetting(key, title, description) {
   }
 }
 
-
+/* eslint-disable-next-line no-unused-vars */
 function _test() {
   var bug = new Bug(445639);
   bug.fetch(SETTINGS.BUG_COLUMNS.concat(SETTINGS.ADDITIONAL_FETCHED_FIELDS).concat(["keywords"]));

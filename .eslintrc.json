@@ -1,7 +1,7 @@
 {
-"extends": [
-"plugin:mozilla/recommended"
-],
+    "extends": [
+      "eslint:recommended"
+    ],
     "plugins": [
       "googleappsscript",
       "mozilla"

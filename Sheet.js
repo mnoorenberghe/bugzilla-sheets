@@ -3,6 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 // Original author: MattN
 
+/* exported lookForBugNumberChange */
+/* global Bug, editTrigger, isValidBugNumber, loadSettings, SETTINGS */
+
 function lookForBugNumberChange(e) {
   loadSettings();
   var range = e.range;
@@ -110,6 +113,7 @@ function updateRowWithBug(id, idRange) {
   toUpdate.setBackground("#fff2cc"); // TODO: add setting
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function updateActiveRange() {
   loadSettings();
   var sheet = SpreadsheetApp.getActiveSheet();
@@ -119,6 +123,7 @@ function updateActiveRange() {
   editTrigger(e);
 }
 
+/* eslint-disable-next-line no-unused-vars */
 function updateActiveSheet() {
   loadSettings();
   var sheet = SpreadsheetApp.getActiveSheet();

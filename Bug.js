@@ -3,6 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 // Original author: MattN
 
+/* exported isValidBugNumber */
+
 // TODO: configure bugzilla server address
 
 function Bug(id) {
