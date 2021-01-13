@@ -16,7 +16,7 @@ Video Help here: [Configuring Bugzilla Addon](https://www.youtube.com/watch?v=in
 1. The Bugzilla Add-on updates visible and hidden columns alike.
 1. Addons/Bugzilla/Update Active Sheet might time-out for a very long list of bugid's (workaround - consider using Addons/Bugzilla/Update Selection with a reduced number of bugid's)
 
-Video Help here: [Best practices, Known issues](https://www.youtube.com/watch?v=in05jed4uVA&t=250s)
+Video Help here: [Best practices, Known issues](https://www.youtube.com/watch?v=in05jed4uVA&t=252s)
 
  
 ### Example  ###
