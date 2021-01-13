@@ -1,4 +1,4 @@
-# Bugzilla add-on: how to configure a gsheet - step by step
+# Bugzilla add-on: how to configure a gsheet with the Bugzilla Addon
 
 
 ## Bugzilla Add-on Configurations ## 
